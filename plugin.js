@@ -86,7 +86,7 @@ tinymce.PluginManager.add('mathjax', function(editor, url) {
   // refresh mathjax on set content
   editor.on('SetContent', function(e) {
     const view = editor.getDoc().defaultView
-    if (view && view.MathJax) {
+    if (view && view.MathJax && view.MathJax.startup) {
       view.MathJax.startup.getComponents();
       view.MathJax.typeset();
     }
@@ -100,7 +100,7 @@ tinymce.PluginManager.add('mathjax', function(editor, url) {
         checkElement(elements[i]);
       }
       const view = editor.getDoc().defaultView
-      if (view && view.MathJax) {
+      if (view && view.MathJax && view.MathJax.startup) {
         view.MathJax.startup.getComponents();
         view.MathJax.typeset();
       }
@@ -179,7 +179,7 @@ tinymce.PluginManager.add('mathjax', function(editor, url) {
           editor.insertContent(newElement.outerHTML);
         }
         const view = editor.getDoc().defaultView
-        if (view && view.MathJax) {
+        if (view && view.MathJax && view.MathJax.startup) {
           view.MathJax.startup.getComponents();
           view.MathJax.typeset();
         }
